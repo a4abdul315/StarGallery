@@ -171,5 +171,20 @@ body {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  touch-action: pan-y; /* Allow vertical page scrolling */
+  touch-action: pan-y !important;
+}
+
+/* Global Mobile Scroll & Nav Fixes */
+@media (max-width: 1024px) {
+  body {
+    padding-bottom: 90px !important; /* Ensure space for fixed bottom nav */
+  }
+  
+  .p-carousel, 
+  .p-carousel-content, 
+  .p-carousel-container, 
+  .p-carousel-items-content,
+  .p-carousel-item {
+    touch-action: pan-y !important;
+  }
 }
