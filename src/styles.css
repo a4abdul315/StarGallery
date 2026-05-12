@@ -203,6 +203,7 @@ body {
     right: 0 !important;
     height: 75px !important;
     background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-around !important;
