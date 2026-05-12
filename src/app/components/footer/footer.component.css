@@ -420,7 +420,7 @@
 
   .footer-unified-bottom {
     background: #FFFFFF;
-    padding: 32px 16px 100px; /* Extra padding for bottom nav */
+    padding: 32px 16px 120px; /* Extra padding for bottom nav clearance */
   }
   .payment-logos {
     display: grid;
