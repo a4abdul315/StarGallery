@@ -1,0 +1,153 @@
+:host ::ng-deep {
+  /* Banner Carousel Overrides */
+  .banner-carousel .p-carousel-prev,
+  .banner-carousel .p-carousel-next {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 10 !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    transition: transform 0.2s;
+  }
+  .banner-carousel .p-carousel-prev:hover,
+  .banner-carousel .p-carousel-next:hover {
+    background: transparent !important;
+    color: white !important;
+    transform: translateY(-50%) scale(1.2) !important;
+  }
+
+  .banner-carousel .p-carousel-prev { left: 10px !important; }
+  .banner-carousel .p-carousel-next { right: 10px !important; }
+
+  /* RTL Fix for Banner Arrows */
+  :host-context([dir="rtl"]) .banner-carousel .p-carousel-prev {
+    right: 10px !important;
+    left: auto !important;
+    transform: translateY(-50%) rotate(180deg) !important;
+  }
+  :host-context([dir="rtl"]) .banner-carousel .p-carousel-next {
+    left: 10px !important;
+    right: auto !important;
+    transform: translateY(-50%) rotate(180deg) !important;
+  }
+
+  .banner-carousel .p-carousel-prev i,
+  .banner-carousel .p-carousel-next i {
+    font-size: 40px !important;
+    font-weight: 200 !important;
+    color: white !important;
+  }
+
+  /* Product Carousel Overrides */
+  .product-carousel .p-carousel-content {
+    position: relative;
+    overflow: visible !important;
+  }
+
+  .product-carousel .p-carousel-prev,
+  .product-carousel .p-carousel-next {
+    position: absolute !important;
+    top: 40% !important;
+    transform: translateY(-50%) !important;
+    z-index: 100 !important;
+    width: 50px !important;
+    height: 50px !important;
+    background: white !important;
+    border: none !important;
+    border-radius: 50% !important;
+    color: #999 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    transition: all 0.2s ease;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-carousel .p-carousel-prev { left: -20px !important; }
+  .product-carousel .p-carousel-next { right: -20px !important; }
+
+  /* RTL Fix for Product Arrows */
+  :host-context([dir="rtl"]) .product-carousel .p-carousel-prev {
+    right: -20px !important;
+    left: auto !important;
+    transform: translateY(-50%) rotate(180deg) !important;
+  }
+  :host-context([dir="rtl"]) .product-carousel .p-carousel-next {
+    left: -20px !important;
+    right: auto !important;
+    transform: translateY(-50%) rotate(180deg) !important;
+  }
+
+  .product-carousel .p-carousel-prev:hover,
+  .product-carousel .p-carousel-next:hover {
+    transform: translateY(-50%) scale(1.05) !important;
+    background: white !important;
+    color: #B23438 !important;
+  }
+
+  .product-carousel .p-carousel-prev-icon,
+  .product-carousel .p-carousel-next-icon {
+    font-size: 14px !important;
+    font-weight: 100 !important;
+  }
+
+  /* Hide indicators as per Noon/Amazon style in this section */
+  .product-carousel .p-carousel-indicators,
+  .banner-carousel .p-carousel-indicators {
+    display: none !important;
+  }
+
+  /* Mobile Specific Navigation Fixes */
+  @media (max-width: 768px) {
+    .product-carousel .p-carousel-prev,
+    .product-carousel .p-carousel-next {
+      display: none !important;
+    }
+
+    .banner-carousel .p-carousel-prev,
+    .banner-carousel .p-carousel-next {
+      background: transparent !important;
+      border: none !important;
+      width: 40px !important;
+      height: 40px !important;
+      color: white !important;
+      box-shadow: none !important;
+    }
+    
+    .banner-carousel .p-carousel-prev i,
+    .banner-carousel .p-carousel-next i {
+      font-size: 24px !important;
+      font-weight: 300 !important;
+    }
+
+    .product-carousel .p-carousel-items-content {
+      overflow: hidden !important;
+    }
+  }
+
+  /* Remove default carousel borders/shadows */
+  .p-carousel .p-carousel-content {
+    border: none !important;
+  }
+
+  /* Hide potential scrollbars comprehensively */
+  &, * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  &::-webkit-scrollbar, *::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .p-carousel-items-container {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  .p-carousel-items-container::-webkit-scrollbar {
+    display: none !important;
+  }
+}

@@ -1,0 +1,172 @@
+.category-section {
+  background: #fff;
+  padding: 80px 0;
+}
+
+/* Figma Style Carousel Arrows */
+:host ::ng-deep .category-carousel .p-carousel-prev.p-link,
+:host ::ng-deep .category-carousel .p-carousel-next.p-link {
+  width: 54px !important;
+  height: 54px !important;
+  min-width: 54px !important;
+  min-height: 54px !important;
+  background: #fff !important;
+  color: #111 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.12) !important;
+  border: none !important;
+  z-index: 10;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+:host ::ng-deep .category-carousel .p-carousel-prev { left: 0px; }
+:host ::ng-deep .category-carousel .p-carousel-next { right: 0px; }
+
+/* RTL Fix for Arrows */
+:host-context([dir="rtl"]) ::ng-deep .category-carousel .p-carousel-prev {
+  right: 0px !important;
+  left: auto !important;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+:host-context([dir="rtl"]) ::ng-deep .category-carousel .p-carousel-next {
+  left: 0px !important;
+  right: auto !important;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+:host ::ng-deep .category-carousel .p-carousel-prev:hover,
+:host ::ng-deep .category-carousel .p-carousel-next:hover {
+  background: #fff !important;
+  color: #00A651 !important;
+}
+
+:host ::ng-deep .p-carousel-prev-icon,
+:host ::ng-deep .p-carousel-next-icon {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Hide default indicators, will use progress bar style if needed, or style them */
+:host ::ng-deep .category-carousel .p-carousel-indicators {
+  margin-top: 30px;
+}
+:host ::ng-deep .category-carousel .p-indicator-button {
+  width: 24px !important;
+  height: 4px !important;
+  border-radius: 2px !important;
+  background: #E5E7EB !important;
+}
+:host ::ng-deep .category-carousel .p-highlight .p-indicator-button {
+  background: #00A651 !important;
+  width: 32px !important;
+}
+
+.cat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.cat-circle {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+.cat-item:hover .cat-circle {
+  transform: translateY(-8px) scale(1.05);
+}
+
+.cat-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply; /* Removes the white background square */
+  transition: transform 0.4s ease;
+}
+.cat-item:hover .cat-img {
+  transform: scale(1.05);
+}
+
+.cat-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  white-space: nowrap;
+  margin-top: 10px;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+.cat-item:hover .cat-name {
+  color: #00A651;
+}
+
+@media (max-width: 1024px) {
+  .category-section {
+    padding: 30px 0 32px;
+  }
+  .cat-circle { width: 80px; height: 80px; }
+  .cat-name { font-size: 11px; margin-top: 4px; }
+  
+  .mobile-cat-grid {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    gap: 24px 16px;
+    overflow-x: auto;
+    padding: 0 16px 24px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar for clean look */
+  }
+  .mobile-cat-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-cat-grid .cat-item {
+    width: 82px; /* Fits approx 4.5 items on screen */
+    scroll-snap-align: start;
+  }
+  
+  .mobile-cat-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .indicator-track {
+    width: 80px;
+    height: 5px;
+    background: #E5E7EB;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .indicator-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50%; /* 2 segments: 50% for first */
+    background: #002D15; /* Dark forest green / Black from reference */
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cat-circle { width: 85px; height: 85px; }
+  .cat-name { font-size: 11px; font-weight: 700; }
+  .mobile-cat-grid .cat-item {
+    width: 85px;
+  }
+}

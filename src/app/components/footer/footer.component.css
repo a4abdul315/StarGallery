@@ -1,0 +1,528 @@
+:host {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+.site-footer {
+  width: 100%;
+  background: #FFFFFF;
+  margin-top: 8px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* TRUST BAR */
+.footer-trust-bar {
+  background: #F3F6F9;
+  padding: 32px 0;
+  border-top: 1px solid #E5E7EB;
+  border-bottom: 1px solid #E5E7EB;
+}
+.trust-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 8px 16px;
+}
+.trust-item:last-child {
+  border-right: none;
+}
+.trust-icon {
+  font-size: 24px;
+  color: #242424;
+}
+.trust-text {
+  font-size: 15px;
+  font-weight: 800;
+  color: #242424;
+  text-transform: capitalize;
+}
+
+@media (min-width: 1024px) {
+  .footer-main {
+    padding: 41px 0 16px;
+  }
+  .footer-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.4fr;
+    gap: 32px;
+  }
+}
+@media (max-width: 1023px) {
+  .footer-main {
+    display: none;
+  }
+}
+  .mobile-section-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: #4B5563;
+    margin: 12px 0 8px; /* Reduced gap */
+    display: block;
+  }
+.footer-col-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 20px;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-link {
+  font-size: 14px;
+  color: #9CA3AF;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 400;
+}
+.footer-link:hover { color: #00A651; }
+
+/* Connect Card */
+.connect-card {
+  background: linear-gradient(45deg, #006E33 0%, #0DAC57 100%);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 20px rgba(0, 166, 81, 0.15);
+}
+.connect-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.connect-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: background 0.2s;
+}
+.connect-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.connect-icon-wrap {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.connect-icon {
+  font-size: 20px;
+  color: #fff;
+}
+.connect-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.connect-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+.connect-value {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* FOOTER BOTTOM ROW */
+.footer-bottom-row {
+  background: #FFFFFF;
+  padding: 16px 0 32px;
+}
+.footer-bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.footer-logo-img {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+}
+.footer-tagline {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+}
+.footer-apps-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+.follow-text {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+}
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+.social-circle {
+  width: 48px;
+  height: 48px;
+  background: #00A651;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+.social-circle:hover {
+  transform: scale(1.05);
+  background: #008A44;
+}
+
+/* UNIFIED BOTTOM SECTION */
+.footer-unified-bottom {
+  background: #F3f6f9;
+  border-top: 1px solid #E5E7EB;
+  padding: 40px 0;
+}
+.unified-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+.payment-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.payment-logo {
+  height: 28px;
+  object-fit: contain;
+}
+
+.legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 32px;
+}
+.legal-links-container {
+  display: none;
+}
+.legal-link {
+  font-size: 14px;
+  color: #7F7B87;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.legal-link:hover { color: #00A651; }
+
+.copyright-text {
+  text-align: center;
+  font-size: 16px;
+  color: #C2C1C9;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 1024px) {
+  .footer-trust-bar {
+    padding: 24px 0;
+    background: #F3F5F7;
+  }
+  .trust-bar-inner {
+    display: flex;
+    justify-content: space-around;
+    gap: 8px;
+    padding: 0 8px;
+  }
+  .trust-item {
+    padding: 4px;
+    gap: 8px;
+    flex-direction: column; /* Vertical layout from image */
+    text-align: center;
+    flex: 1;
+    border-bottom: none;
+  }
+  .trust-icon {
+    font-size: 24px;
+    color: #002D15;
+    margin-bottom: 8px;
+  }
+  .trust-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: #111;
+    line-height: 1.2;
+    text-transform: capitalize;
+    max-width: 80px;
+  }
+
+  .mobile-footer-brand {
+    padding: 20px 0;
+    text-align: center;
+  }
+  .mobile-brand-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  .mobile-logo-img {
+    height: 56px;
+    width: auto;
+  }
+  .connect-card-main {
+    background: linear-gradient(45deg, #006E33 0%, #0DAC57 100%);
+    border-radius: 12px;
+    padding: 32px 16px;
+    margin: 24px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .connect-title {
+    color: #fff;
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 28px;
+    display: block;
+    text-align: left;
+    padding-left: 12px;
+  }
+  .connect-item-card {
+    background: rgba(255, 255, 255, 0.12); /* Perfect glass effect from reference */
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: start;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+  .connect-item-card:last-child {
+    margin-bottom: 0;
+  }
+  .connect-icon-wrap {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .connect-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .connect-label {
+    color: #fff;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .connect-value {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    opacity: 0.95;
+  }
+  .mobile-divider-bottom {
+    display: none;
+  }
+  .mobile-apps-img {
+    height: 36px;
+    width: auto;
+  }
+
+  .mobile-divider {
+    display: none;
+  }
+
+  .mobile-accordion {
+    padding: 16px 0;
+  }
+  :host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+    background: transparent !important;
+    border: none !important;
+    padding: 16px 4px !important;
+    font-weight: 800 !important;
+    color: #111827 !important;
+    font-size: 15px !important;
+    flex-direction: row-reverse !important;
+    justify-content: space-between !important;
+    border-bottom: none !important;
+  }
+  :host ::ng-deep .p-accordion .p-accordion-content {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 0 16px 0 !important;
+  }
+
+
+  .mobile-connect .connect-card {
+    box-shadow: 0 10px 30px rgba(0, 166, 81, 0.1);
+  }
+  .mobile-connect .connect-info {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .mobile-connect .connect-item {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-unified-bottom {
+    background: #FFFFFF;
+    padding: 32px 16px 100px; /* Extra padding for bottom nav */
+  }
+  .payment-logos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px 75px;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 10px;
+  }
+  .payment-logo {
+    height: 35px; /* Large icons like reference */
+    width: auto;
+    object-fit: contain;
+  }
+  .legal-links-container {
+    display: block !important;
+    width: 100%;
+    
+  }
+  .legal-links {
+    display: none !important;
+  }
+  .legal-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-bottom: 20px;
+  }
+  .legal-row.centered-row {
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 0;
+  }
+  .legal-link {
+    font-size: 13px;
+    font-weight: 400;
+    color: #6B7280;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .copyright-text {
+    font-size: 12px;
+    color: #9CA3AF;
+  }
+
+  /* Sticky Bottom Nav */
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid #E5E7EB;
+    z-index: 1000;
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+  }
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #6B7280;
+    transition: color 0.2s;
+  }
+  .nav-item i {
+    font-size: 20px;
+  }
+  .nav-item span {
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .nav-item.active {
+    color: #00A651;
+  }
+
+/* MOBILE ACCORDION CUSTOM STYLING */
+:host ::ng-deep .p-accordion {
+  border: none !important;
+}
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+  background: #fff !important;
+  border: none !important;
+  padding: 7px 0 !important;
+  color: #111 !important;
+  display: flex !important;
+  flex-direction: row-reverse !important; /* Put icon on right */
+  justify-content: space-between !important;
+  transition: all 0.2s ease;
+}
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-text {
+  font-size: 14px !important; /* Slightly larger */
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+}
+:host ::ng-deep .p-accordion .p-accordion-toggle-icon {
+  font-size: 16px !important;
+  color: #9CA3AF !important;
+}
+:host ::ng-deep .p-accordion .p-accordion-content {
+  background: #fff !important;
+  border: none !important;
+  padding: 8px 0 24px 0 !important;
+}
+.footer-link {
+  display: block;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #4B5563;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-link:hover {
+  color: #00A651;
+}
+}
