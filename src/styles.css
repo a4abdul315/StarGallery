@@ -180,11 +180,18 @@ body {
     padding-bottom: 90px !important; /* Ensure space for fixed bottom nav */
   }
   
+  /* Aggressively allow vertical scrolling on all interactive components */
   .p-carousel, 
-  .p-carousel-content, 
-  .p-carousel-container, 
-  .p-carousel-items-content,
-  .p-carousel-item {
+  .p-carousel *,
+  .product-card,
+  .product-card *,
+  .cat-item,
+  .cat-item *,
+  .mobile-cat-grid,
+  .banner-item,
+  .banner-item *,
+  .variationContainer,
+  .variationContainer * {
     touch-action: pan-y !important;
   }
 }

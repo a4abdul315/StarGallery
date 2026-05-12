@@ -146,6 +146,13 @@
     overflow: hidden !important;
   }
 
+  .product-card,
+  .product-card *,
+  .variationContainer,
+  .variationContainer * {
+    touch-action: pan-y !important;
+  }
+
   /* Hide potential scrollbars comprehensively */
   &, * {
     scrollbar-width: none !important;
