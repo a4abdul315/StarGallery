@@ -150,6 +150,7 @@
   &, * {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
+    touch-action: pan-y; /* Allow vertical page scrolling */
   }
   &::-webkit-scrollbar, *::-webkit-scrollbar {
     display: none !important;
@@ -158,8 +159,14 @@
   .p-carousel-items-container {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
+    touch-action: pan-y !important;
   }
   .p-carousel-items-container::-webkit-scrollbar {
     display: none !important;
+  }
+
+  /* Specific touch fix for iOS Safari */
+  .p-carousel-item {
+    touch-action: pan-y !important;
   }
 }

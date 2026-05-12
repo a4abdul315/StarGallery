@@ -64,7 +64,7 @@ export class BrandShowcaseComponent implements OnInit, OnDestroy {
       tagline: 'Innovation and Excellence',
       taglineAr: 'الابتكار والتميز',
       logoUrl: 'https://promate.net/cdn/shop/files/logo_black_180x.png?v=1613715103',
-      bannerBg: 'url("assets/aclr.png") center/cover no-repeat',
+      bannerBg: 'url("assets/newbanner.png") center/cover no-repeat',
       mobileImageUrl: 'assets/promatemobile.png'
     },
     {
@@ -73,7 +73,7 @@ export class BrandShowcaseComponent implements OnInit, OnDestroy {
       tagline: 'Experience the Future',
       taglineAr: 'تجربة المستقبل',
       logoUrl: 'https://promate.net/cdn/shop/files/logo_black_180x.png?v=1613715103',
-      bannerBg: 'url("assets/aclr.png") center/cover no-repeat',
+      bannerBg: 'url("assets/newbanner.png") center/cover no-repeat',
       mobileImageUrl: 'assets/promatemobile.png'
     },
     {
@@ -94,8 +94,8 @@ export class BrandShowcaseComponent implements OnInit, OnDestroy {
     { breakpoint: '1536px', numVisible: 6, numScroll: 2 },
     { breakpoint: '1280px', numVisible: 5, numScroll: 2 },
     { breakpoint: '1024px', numVisible: 4, numScroll: 1 },
-    { breakpoint: '768px', numVisible: 2, numScroll: 1 },
-    { breakpoint: '480px', numVisible: 2, numScroll: 1 }
+    { breakpoint: '768px', numVisible: 3, numScroll: 1 },
+    { breakpoint: '480px', numVisible: 3, numScroll: 1 }
   ];
 
   constructor(public tr: TranslationService) {
