@@ -171,4 +171,5 @@ body {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  touch-action: pan-y; /* Allow vertical page scrolling */
 }

@@ -62,6 +62,7 @@
                   <!-- Swipeable Container -->
                   <div #variationContainer
                        (scroll)="onProductImageScroll($event, product)"
+                       style="touch-action: pan-y;"
                        class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-full cursor-grab active:cursor-grabbing">
                     <div *ngFor="let img of product.images; let i = index" 
                          class="flex-shrink-0 w-full h-full snap-center flex items-center justify-center p-4">
