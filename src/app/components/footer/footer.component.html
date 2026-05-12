@@ -5,19 +5,19 @@
       <div class="trust-bar-inner">
         <div class="trust-item">
           <i class="pi pi-truck trust-icon"></i>
-          <span class="trust-text">Fast Shipping</span>
+          <span class="trust-text">{{ tr.t('fastShipping') }}</span>
         </div>
         <div class="trust-item">
           <i class="pi pi-credit-card trust-icon"></i>
-          <span class="trust-text">Shipping Methods</span>
+          <span class="trust-text">{{ tr.t('shippingMethods') }}</span>
         </div>
         <div class="trust-item">
           <i class="pi pi-shield trust-icon"></i>
-          <span class="trust-text">Secure Transactions</span>
+          <span class="trust-text">{{ tr.t('secureTransactions') }}</span>
         </div>
         <div class="trust-item">
           <i class="pi pi-comments trust-icon"></i>
-          <span class="trust-text">24/7 Support</span>
+          <span class="trust-text">{{ tr.t('support247') }}</span>
         </div>
       </div>
     </div>
@@ -67,7 +67,7 @@
                 <i class="pi pi-phone connect-icon"></i>
               </div>
               <div class="connect-info">
-                <span class="connect-label">Phone Number</span>
+                <span class="connect-label">{{ tr.t('phoneNumber') }}</span>
                 <span class="connect-value">+97165779360</span>
               </div>
             </div>
@@ -76,7 +76,7 @@
                 <i class="pi pi-envelope connect-icon"></i>
               </div>
               <div class="connect-info">
-                <span class="connect-label">E-Mail</span>
+                <span class="connect-label">{{ tr.t('email') }}</span>
                 <span class="connect-value">support&#64;stargallery.ae</span>
               </div>
             </div>
@@ -93,12 +93,12 @@
         <!-- Logo + App Stores -->
         <div class="footer-brand">
           <img src="assets/logo.png" alt="Star Gallery" class="footer-logo-img">
-          <p class="footer-tagline">Shopping Anytime, Anywhere!</p>
+          <p class="footer-tagline">{{ tr.t('mobileApps') }}</p>
           <img src="assets/frame.png" alt="Download on App Store and Google Play" class="footer-apps-img">
         </div>
 
         <div class="footer-right">
-          <p class="follow-text">Follow us for exclusive deals</p>
+          <p class="follow-text">{{ tr.t('followUs') }}</p>
           <div class="social-icons">
             <a *ngFor="let s of socialLinks" href="#" class="social-circle" [attr.aria-label]="s.label" [id]="'social-' + s.icon">
               <i *ngIf="s.icon !== 'snapchat'" [class]="'pi pi-' + s.icon"></i>
@@ -130,7 +130,7 @@
         <img src="assets/logo.png" alt="Star Gallery" class="mobile-logo-img">
         
         <div class="mobile-social-section">
-          <p class="mobile-section-title">Follow us for exclusive deals</p>
+          <p class="mobile-section-title">{{ tr.t('followUs') }}</p>
           <div class="social-icons">
             <a *ngFor="let s of socialLinks" href="#" class="social-circle" [attr.aria-label]="s.label">
               <i *ngIf="s.icon !== 'snapchat'" [class]="'pi pi-' + s.icon"></i>
@@ -142,7 +142,7 @@
         </div>
 
         <div class="mobile-apps-section">
-          <p class="mobile-section-title">Shopping Anytime, Anywhere!</p>
+          <p class="mobile-section-title">{{ tr.t('mobileApps') }}</p>
           <img src="assets/frame.png" alt="Apps" class="mobile-apps-img">
         </div>
       </div>
@@ -186,7 +186,7 @@
         <!-- Connect Section -->
         <div class="mobile-connect-section">
           <div class="connect-card-main">
-            <h3 class="connect-title">Connect With Us</h3>
+            <h3 class="connect-title">{{ tr.t('connectWithUs') }}</h3>
             
             <div class="connect-item-card">
               <div class="connect-icon-wrap">
@@ -196,7 +196,7 @@
                 </svg>
               </div>
               <div class="connect-info">
-                <span class="connect-label">Phone Number</span>
+                <span class="connect-label">{{ tr.t('phoneNumber') }}</span>
                 <span class="connect-value">+966000000000</span>
               </div>
             </div>
@@ -210,7 +210,7 @@
                 </svg>
               </div>
               <div class="connect-info">
-                <span class="connect-label">E-Mail</span>
+                <span class="connect-label">{{ tr.t('email') }}</span>
                 <span class="connect-value">Example&#64;Gmail.Com</span>
               </div>
             </div>
@@ -267,23 +267,23 @@
   <div class="mobile-bottom-nav lg:hidden">
     <div class="nav-item">
       <i class="pi pi-th-large"></i>
-      <span>Categories</span>
+      <span>{{ tr.t('mobileCategories') }}</span>
     </div>
     <div class="nav-item">
       <i class="pi pi-tags"></i>
-      <span>Brands</span>
+      <span>{{ tr.t('mobileBrands') }}</span>
     </div>
     <div class="nav-item active">
       <i class="pi pi-home"></i>
-      <span>Home</span>
+      <span>{{ tr.t('mobileHome') }}</span>
     </div>
     <div class="nav-item">
       <i class="pi pi-user"></i>
-      <span>Account</span>
+      <span>{{ tr.t('mobileAccount') }}</span>
     </div>
     <div class="nav-item">
       <i class="pi pi-shopping-cart"></i>
-      <span>Cart</span>
+      <span>{{ tr.t('mobileCart') }}</span>
     </div>
   </div>
 </footer>

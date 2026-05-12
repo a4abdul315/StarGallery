@@ -1,11 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarouselModule, Carousel } from 'primeng/carousel';
+import { Subject, takeUntil } from 'rxjs';
+import { TranslationService } from '../../core/services/translation.service';
 
 interface BrandBanner {
   id: number;
   name: string;
   tagline: string;
+  taglineAr: string;
   logoUrl: string;
   bannerBg: string;
   mobileImageUrl?: string;
@@ -15,7 +18,9 @@ interface Product {
   id: number;
   brandId: number;
   name: string;
-  image: string;
+  nameAr: string;
+  images: string[];
+  activeImageIndex: number;
   price: number;
   originalPrice: number;
   discount: number;
@@ -27,6 +32,17 @@ interface Product {
   isWishlisted: boolean;
 }
 
+type Language = 'en' | 'ar';
+
+const translations = {
+  en: {
+    off: 'OFF'
+  },
+  ar: {
+    off: 'خصم'
+  }
+};
+
 @Component({
   selector: 'app-brand-showcase',
   standalone: true,
@@ -34,14 +50,19 @@ interface Product {
   templateUrl: './brand-showcase.component.html',
   styleUrls: ['./brand-showcase.component.css']
 })
-export class BrandShowcaseComponent implements OnInit {
+export class BrandShowcaseComponent implements OnInit, OnDestroy {
   @ViewChild('productCarousel') productCarousel!: Carousel;
+
+  lang: Language = 'en';
+  private destroy$ = new Subject<void>();
+  translations = translations;
 
   banners: BrandBanner[] = [
     {
       id: 1,
       name: 'PROMATE',
       tagline: 'Innovation and Excellence',
+      taglineAr: 'الابتكار والتميز',
       logoUrl: 'https://promate.net/cdn/shop/files/logo_black_180x.png?v=1613715103',
       bannerBg: 'url("assets/aclr.png") center/cover no-repeat',
       mobileImageUrl: 'assets/promatemobile.png'
@@ -50,6 +71,7 @@ export class BrandShowcaseComponent implements OnInit {
       id: 2,
       name: 'SAMSUNG',
       tagline: 'Experience the Future',
+      taglineAr: 'تجربة المستقبل',
       logoUrl: 'https://promate.net/cdn/shop/files/logo_black_180x.png?v=1613715103',
       bannerBg: 'url("assets/aclr.png") center/cover no-repeat',
       mobileImageUrl: 'assets/promatemobile.png'
@@ -58,6 +80,7 @@ export class BrandShowcaseComponent implements OnInit {
       id: 3,
       name: 'APPLE',
       tagline: 'Think Different',
+      taglineAr: 'فكر بشكل مختلف',
       logoUrl: 'https://promate.net/cdn/shop/files/logo_black_180x.png?v=1613715103',
       bannerBg: 'url("assets/aclr.png") center/cover no-repeat',
       mobileImageUrl: 'assets/promatemobile.png'
@@ -75,12 +98,18 @@ export class BrandShowcaseComponent implements OnInit {
     { breakpoint: '480px', numVisible: 2, numScroll: 1 }
   ];
 
-  constructor() {
+  constructor(public tr: TranslationService) {
     this.generateMockProducts();
   }
 
   ngOnInit(): void {
     this.filterProducts(1);
+    this.tr.lang$.pipe(takeUntil(this.destroy$)).subscribe(l => this.lang = l);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   onBannerChange(event: any): void {
@@ -103,6 +132,22 @@ export class BrandShowcaseComponent implements OnInit {
     if (prod) prod.isWishlisted = !prod.isWishlisted;
   }
 
+  setProductImage(product: Product, index: number, container: HTMLDivElement): void {
+    product.activeImageIndex = index;
+    container.scrollTo({
+      left: index * container.offsetWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  onProductImageScroll(event: any, product: Product): void {
+    const element = event.target;
+    const index = Math.round(element.scrollLeft / element.offsetWidth);
+    if (product.activeImageIndex !== index) {
+      product.activeImageIndex = index;
+    }
+  }
+
   private generateMockProducts(): void {
     const brands = [1, 2, 3];
     let id = 1;
@@ -112,7 +157,13 @@ export class BrandShowcaseComponent implements OnInit {
           id: id++,
           brandId,
           name: brandId === 1 ? 'Promate MagTag-15W MagSafe' : `Premium Gadget ${id}`,
-          image: 'assets/16pro.png',
+          nameAr: brandId === 1 ? 'بروميت MagTag-15W MagSafe' : `أداة متميزة ${id}`,
+          images: [
+            'assets/16pro.png',
+            'assets/aclr.png', // Mock variation
+            'assets/promatemobile.png' // Mock variation
+          ],
+          activeImageIndex: 0,
           price: 12 + i * 5,
           originalPrice: 20 + i * 10,
           discount: 40,

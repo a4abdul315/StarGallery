@@ -67,16 +67,30 @@
                   <i [class]="product.isWishlisted ? 'pi pi-heart-fill' : 'pi pi-heart'"></i>
                 </button>
  
-                <!-- Image -->
-                <div class="aspect-square mb-3 overflow-hidden rounded-xl flex items-center justify-start p-0">
-                  <img [src]="product.image" [alt]="product.name" class="max-h-full max-w-full object-contain transform scale-108 origin-left">
-                </div>
+                <!-- Image Area -->
+                <div class="relative w-full aspect-square overflow-hidden bg-[#F9FAFB] mb-2 rounded-xl group">
+                  <!-- Swipeable Container -->
+                  <div #variationContainer
+                       (scroll)="onProductImageScroll($event, product)"
+                       class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-full cursor-grab active:cursor-grabbing">
+                    <div *ngFor="let img of product.images; let i = index" 
+                         class="flex-shrink-0 w-full h-full snap-center flex items-center justify-center p-4">
+                      <img [src]="img" [alt]="product.name" class="max-h-full max-w-full object-contain select-none pointer-events-none">
+                    </div>
+                  </div>
+                  
+                  <!-- Wishlist Button -->
+                  <button (click)="toggleWishlist(product.id)" class="absolute top-2 right-2 z-10 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors">
+                    <i class="pi" [class.pi-heart]="!product.isWishlisted" [class.pi-heart-fill]="product.isWishlisted" [class.text-red-500]="product.isWishlisted"></i>
+                  </button>
 
-                <!-- Slide Dots (Indicator) -->
-                <div class="flex justify-center mb-4">
-                  <div class="w-8 h-1 bg-gray-600 rounded-full"></div>
-                  <div class="flex gap-1 ml-1.5">
-                    <div class="w-1 h-1 bg-gray-200 rounded-full"></div>
+                  <!-- Variations Dots (Indicator) -->
+                  <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+                    <div *ngFor="let img of product.images; let idx = index"
+                         (click)="setProductImage(product, idx, variationContainer)"
+                         class="cursor-pointer transition-all duration-300"
+                         [ngClass]="product.activeImageIndex === idx ? 'h-1.5 w-8 rounded-full bg-slate-600' : 'h-1.5 w-1.5 rounded-full bg-slate-300'">
+                    </div>
                   </div>
                 </div>
 
@@ -84,7 +98,7 @@
                 <div class="product-info space-y-1 text-left px-1">
                   <!-- Name -->
                   <h3 class="text-[14px] font-bold text-black leading-tight mb-2 line-clamp-2 min-h-[34px]">
-                    {{ product.name }}
+                    {{ lang === 'ar' ? product.nameAr : product.name }}
                   </h3>
                   
                   <!-- Rating -->
@@ -109,14 +123,16 @@
                     </div>
                     <div class="flex items-center gap-4">
                       <span class="text-[#A0A0A0] text-[12px] md:text-[14px] line-through font-normal">{{ product.originalPrice }}</span>
-                      <span class="text-[10px] md:text-[12px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 bg-[#FFF0F0] rounded-full whitespace-nowrap text-[#B23438]">{{ product.discount }}% OFF</span>
+                      <span class="text-[10px] md:text-[12px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 bg-[#FFF0F0] rounded-full whitespace-nowrap text-[#B23438]">
+                        {{ product.discount }}% {{ tr.t('off') }}
+                      </span>
                     </div>
                   </div>
 
                   <!-- Cash On Delivery -->
                   <div *ngIf="product.cashOnDelivery" class="flex items-center gap-1.5 text-[#00A651] text-[14px] font-bold mt-[12px] mb-[-12px] md:mt-0 md:mb-0">
                     <img src="assets/cashicon.png" alt="COD" class="h-4 w-4 object-contain">
-                    Cash On Delivery
+                    {{ tr.t('cashOnDeliveryBadge') }}
                   </div>
 
                   <!-- Badges -->
@@ -134,7 +150,7 @@
         <!-- VIEW MORE BUTTON (PILL STYLE) -->
         <div class="mt-8 flex justify-center px-4 md:px-0">
           <button class="bg-white text-[#B23438] font-black py-4 px-12 rounded-2xl w-full max-w-[100%] text-xl transition-transform hover:scale-[1.01] active:scale-[0.99]">
-            View More
+            {{ tr.t('viewMore') }}
           </button>
         </div>
       </div>

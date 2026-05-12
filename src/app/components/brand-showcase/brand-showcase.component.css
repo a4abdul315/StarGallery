@@ -1,4 +1,12 @@
 :host ::ng-deep {
+  /* GLOBAL CAROUSEL RTL FIX */
+  .p-carousel {
+    direction: ltr !important;
+  }
+  :host-context([dir="rtl"]) .p-carousel-item {
+    direction: rtl !important;
+  }
+
   /* Banner Carousel Overrides */
   .banner-carousel .p-carousel-prev,
   .banner-carousel .p-carousel-next {
@@ -132,6 +140,10 @@
   /* Remove default carousel borders/shadows */
   .p-carousel .p-carousel-content {
     border: none !important;
+    overflow: visible !important;
+  }
+  .p-carousel .p-carousel-items-content {
+    overflow: hidden !important;
   }
 
   /* Hide potential scrollbars comprehensively */

@@ -3,6 +3,14 @@
   padding: 80px 0;
 }
 
+/* GLOBAL CAROUSEL RTL FIX */
+:host ::ng-deep .p-carousel {
+  direction: ltr !important;
+}
+:host-context([dir="rtl"]) ::ng-deep .p-carousel-item {
+  direction: rtl !important;
+}
+
 /* Figma Style Carousel Arrows */
 :host ::ng-deep .category-carousel .p-carousel-prev.p-link,
 :host ::ng-deep .category-carousel .p-carousel-next.p-link {
@@ -23,6 +31,13 @@
   display: flex !important;
   align-items: center;
   justify-content: center;
+}
+
+:host ::ng-deep .p-carousel-content {
+  overflow: visible !important;
+}
+:host ::ng-deep .p-carousel-items-content {
+  overflow: hidden !important;
 }
 :host ::ng-deep .category-carousel .p-carousel-prev { left: 0px; }
 :host ::ng-deep .category-carousel .p-carousel-next { right: 0px; }

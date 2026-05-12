@@ -314,6 +314,9 @@
     width: 100%;
     box-sizing: border-box;
   }
+  :host-context([dir="rtl"]) .connect-card-main {
+    direction: rtl !important;
+  }
   .connect-title {
     color: #fff;
     font-size: 21px;
@@ -323,6 +326,11 @@
     text-align: left;
     padding-left: 12px;
   }
+  :host-context([dir="rtl"]) .connect-title {
+    text-align: right !important;
+    padding-left: 0 !important;
+    padding-right: 12px !important;
+  }
   .connect-item-card {
     background: rgba(255, 255, 255, 0.12); /* Perfect glass effect from reference */
     border-radius: 12px;
@@ -331,6 +339,13 @@
     align-items: start;
     gap: 24px;
     margin-bottom: 16px;
+  }
+  :host-context([dir="rtl"]) .connect-item-card {
+    text-align: right !important;
+  }
+  :host-context([dir="rtl"]) .connect-info {
+    text-align: right !important;
+    align-items: flex-start !important;
   }
   .connect-item-card:last-child {
     margin-bottom: 0;

@@ -89,7 +89,7 @@
         <input
           type="text"
           class="search-input"
-          placeholder="What are you looking for"
+          [placeholder]="tr.t('searchPlaceholder')"
           [dir]="isRtl ? 'rtl' : 'ltr'"
           aria-label="Search products"
           id="header-search"
@@ -146,7 +146,7 @@
       <div class="loc-pin">
         <i class="pi pi-map-marker"></i>
       </div>
-      <span class="loc-label">Deliver to</span>
+      <span class="loc-label">{{ tr.t('deliverTo') }}</span>
       <span class="loc-address">57XC+WJ-Dubai</span>
       <i class="pi pi-chevron-down loc-arrow"></i>
     </div>
@@ -160,7 +160,7 @@
       <!-- Categories Button -->
       <button class="categories-btn" id="nav-categories" aria-label="All categories">
         <i class="pi pi-th-large"></i>
-        <span>Categories</span>
+        <span>{{ tr.t('allCategories') }}</span>
       </button>
 
       <!-- All Links as direct flex children -->
