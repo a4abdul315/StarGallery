@@ -194,4 +194,44 @@ body {
   .variationContainer * {
     touch-action: pan-y !important;
   }
+
+  /* Global Sticky Bottom Nav */
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: #FFFFFF !important; /* Solid white to prevent see-through */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid #E5E7EB !important; /* Stronger border */
+    z-index: 9999 !important; /* Top of everything */
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -8px 24px rgba(0,0,0,0.12);
+  }
+  
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #6B7280;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .nav-item i {
+    font-size: 20px;
+  }
+  
+  .nav-item span {
+    font-size: 10px;
+    font-weight: 600;
+  }
+  
+  .nav-item.active {
+    color: #00A651;
+  }
 }

@@ -4,3 +4,30 @@
   <app-brand-showcase></app-brand-showcase>
 </main>
 <app-footer></app-footer>
+
+<!-- Mobile Safe Area Spacer -->
+<div class="h-[100px] lg:hidden"></div>
+
+<!-- Global Mobile Bottom Nav Bar -->
+<div class="mobile-bottom-nav lg:hidden">
+  <div class="nav-item">
+    <i class="pi pi-th-large"></i>
+    <span>{{ tr.t('mobileCategories') }}</span>
+  </div>
+  <div class="nav-item">
+    <i class="pi pi-tags"></i>
+    <span>{{ tr.t('mobileBrands') }}</span>
+  </div>
+  <div class="nav-item active">
+    <i class="pi pi-home"></i>
+    <span>{{ tr.t('mobileHome') }}</span>
+  </div>
+  <div class="nav-item">
+    <i class="pi pi-user"></i>
+    <span>{{ tr.t('mobileAccount') }}</span>
+  </div>
+  <div class="nav-item">
+    <i class="pi pi-shopping-cart"></i>
+    <span>{{ tr.t('mobileCart') }}</span>
+  </div>
+</div>

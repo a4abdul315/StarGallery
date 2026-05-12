@@ -5,6 +5,8 @@ import { CategorySliderComponent } from './components/category-slider/category-s
 import { FooterComponent } from './components/footer/footer.component';
 import { BrandShowcaseComponent } from './components/brand-showcase/brand-showcase.component';
 
+import { TranslationService } from './core/services/translation.service';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,4 +20,6 @@ import { BrandShowcaseComponent } from './components/brand-showcase/brand-showca
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(public tr: TranslationService) {}
+}
