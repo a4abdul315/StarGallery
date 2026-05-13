@@ -146,19 +146,22 @@
     overflow: hidden !important;
   }
 
-  /* Aggressive Mobile Scroll Fix for the whole section */
+  /* Native-feeling Scroll Fix */
   .brand-showcase-section,
-  .brand-showcase-wrapper,
-  .brand-showcase-section *,
-  .brand-showcase-wrapper *,
-  .p-carousel, 
-  .p-carousel *,
+  .brand-showcase-wrapper {
+    touch-action: pan-y !important; /* Allow vertical scroll on the section */
+  }
+
+  .p-carousel-content {
+    touch-action: pan-x !important; /* Allow horizontal swipe on the carousel */
+  }
+
   .product-card,
   .product-card *,
   .variationContainer,
   .variationContainer * {
-    touch-action: pan-y !important;
-    pointer-events: auto; /* Ensure they don't block by being none */
+    touch-action: pan-x pan-y !important; /* Allow both on small items */
+    pointer-events: auto;
   }
 
   /* Force product cards to not capture vertical scroll */

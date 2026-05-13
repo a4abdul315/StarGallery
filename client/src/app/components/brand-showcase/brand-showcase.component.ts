@@ -113,38 +113,6 @@ export class BrandShowcaseComponent implements OnInit, OnDestroy {
   }
 
   // FORCE SCROLL PASSTHROUGH
-  @HostListener('wheel', ['$event'])
-  onWheel(event: WheelEvent): void {
-    // If the scroll is mostly vertical, force the window to scroll
-    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-      window.scrollBy({
-        top: event.deltaY,
-        behavior: 'auto'
-      });
-      // Do not prevent default, just let it through
-    }
-  }
-
-  // TOUCH SCROLL PASSTHROUGH
-  private touchStartY = 0;
-
-  @HostListener('touchstart', ['$event'])
-  onTouchStart(event: TouchEvent): void {
-    this.touchStartY = event.touches[0].clientY;
-  }
-
-  @HostListener('touchmove', ['$event'])
-  onTouchMove(event: TouchEvent): void {
-    const touchY = event.touches[0].clientY;
-    const deltaY = this.touchStartY - touchY;
-
-    // If movement is vertical and substantial, manually scroll
-    if (Math.abs(deltaY) > 5) {
-      window.scrollBy(0, deltaY);
-      this.touchStartY = touchY;
-    }
-  }
-
   onBannerChange(event: any): void {
     const activeBanner = this.banners[event.page];
     if (activeBanner) {
