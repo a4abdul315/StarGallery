@@ -125,6 +125,26 @@ export class BrandShowcaseComponent implements OnInit, OnDestroy {
     }
   }
 
+  // TOUCH SCROLL PASSTHROUGH
+  private touchStartY = 0;
+
+  @HostListener('touchstart', ['$event'])
+  onTouchStart(event: TouchEvent): void {
+    this.touchStartY = event.touches[0].clientY;
+  }
+
+  @HostListener('touchmove', ['$event'])
+  onTouchMove(event: TouchEvent): void {
+    const touchY = event.touches[0].clientY;
+    const deltaY = this.touchStartY - touchY;
+
+    // If movement is vertical and substantial, manually scroll
+    if (Math.abs(deltaY) > 5) {
+      window.scrollBy(0, deltaY);
+      this.touchStartY = touchY;
+    }
+  }
+
   onBannerChange(event: any): void {
     const activeBanner = this.banners[event.page];
     if (activeBanner) {
