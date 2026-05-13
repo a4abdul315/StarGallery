@@ -2,6 +2,7 @@
   /* GLOBAL CAROUSEL RTL FIX */
   .p-carousel {
     direction: ltr !important;
+    touch-action: pan-y !important;
   }
   :host-context([dir="rtl"]) .p-carousel-item {
     direction: rtl !important;
@@ -163,17 +164,15 @@
     display: none !important;
   }
 
-  .p-carousel-items-container {
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
+  /* Aggressive Mobile Scroll Fix */
+  .p-carousel, 
+  .p-carousel-content, 
+  .p-carousel-container, 
+  .p-carousel-items-content,
+  .p-carousel-items-container,
+  .p-carousel-item,
+  .product-card {
     touch-action: pan-y !important;
-  }
-  .p-carousel-items-container::-webkit-scrollbar {
-    display: none !important;
-  }
-
-  /* Specific touch fix for iOS Safari */
-  .p-carousel-item {
-    touch-action: pan-y !important;
+    -ms-touch-action: pan-y !important;
   }
 }

@@ -21,22 +21,25 @@
       </p-carousel>
     </div>
 
-    <!-- Mobile 2-Row Grid -->
+    <!-- Mobile Carousel -->
     <div class="lg:hidden">
-      <div class="mobile-cat-grid">
-        <div *ngFor="let cat of categories.slice(0, 10)" class="cat-item">
-          <div class="cat-circle">
-            <img src="assets/charger.png" [alt]="getCategoryName(cat)" class="cat-img" loading="lazy">
+      <p-carousel
+        [value]="categories"
+        [numVisible]="4"
+        [numScroll]="1"
+        [circular]="true"
+        [responsiveOptions]="[{breakpoint: '768px', numVisible: 4, numScroll: 1}]"
+        styleClass="category-carousel mobile-carousel"
+      >
+        <ng-template let-cat pTemplate="item">
+          <div class="cat-item" [id]="'cat-' + cat.id">
+            <div class="cat-circle">
+              <img src="assets/charger.png" [alt]="getCategoryName(cat)" class="cat-img" loading="lazy">
+            </div>
+            <span class="cat-name">{{ getCategoryName(cat) }}</span>
           </div>
-          <span class="cat-name">{{ getCategoryName(cat) }}</span>
-        </div>
-      </div>
-      <!-- Mobile Progress Indicator -->
-      <div class="mobile-cat-indicator">
-        <div class="indicator-track">
-          <div class="indicator-bar"></div>
-        </div>
-      </div>
+        </ng-template>
+      </p-carousel>
     </div>
   </div>
 </section>
