@@ -95,11 +95,15 @@
               <div class="flex items-center gap-1 mb-1" dir="ltr" [ngClass]="{'justify-end': lang === 'ar'}">
                 <div class="flex items-center">
                   <i *ngFor="let star of [1,2,3,4,5]" 
-                     class="pi" 
+                     class="pi md:block hidden" 
                      [ngClass]="star <= product.rating ? 'pi-star-fill text-yellow-400' : 'pi-star text-gray-300'"
-                     style="font-size: 7px;"></i>
+                     [style.fontSize]="lang === 'ar' ? '12px' : '14px'"></i>
+                  <i *ngFor="let star of [1,2,3,4,5]" 
+                     class="pi md:hidden block" 
+                     [ngClass]="star <= product.rating ? 'pi-star-fill text-yellow-400' : 'pi-star text-gray-300'"
+                     style="font-size: 8px;"></i>
                 </div>
-                <span class="text-[8px] text-gray-400 font-normal ml-1">{{ product.rating }} ({{ product.reviews }})</span>
+                <span class="text-[10px] md:text-[15px] text-gray-400 font-normal ml-1">{{ product.rating }} ({{ product.reviews }})</span>
               </div>
               <div class="flex items-center justify-start gap-4 md:justify-between flex-nowrap mb-3" [ngClass]="{'justify-end': lang === 'ar'}">
                 <span class="text-[14px] md:text-[22px] font-semibold text-black leading-none flex items-center" dir="ltr">
@@ -114,13 +118,13 @@
                   </span>
                 </div>
               </div>
-              <div *ngIf="product.cashOnDelivery" class="flex items-center gap-1 text-[#00A651] text-[10px] font-normal mt-[12px] mb-[-12px] md:mt-0 md:mb-0">
-                <img src="assets/cashicon.png" alt="COD" class="h-[10px] w-[10px] object-contain">
+              <div *ngIf="product.cashOnDelivery" class="flex items-center gap-1 text-[#00A651] text-[12px] md:text-[16px] font-normal mt-[12px] mb-[-12px] md:mt-0 md:mb-0">
+                <img src="assets/cashicon.png" alt="COD" class="h-[12px] md:h-[18px] w-[12px] md:w-[18px] object-contain">
                 {{ tr.t('cashOnDeliveryBadge') }}
               </div>
               <div class="flex items-center gap-1.5">
-                <img *ngIf="product.tabby" src="assets/tabby.png" alt="Tabby" class="h-[11px] object-contain">
-                <img *ngIf="product.tamara" src="assets/tamara.png" alt="Tamara" class="h-[11px] object-contain">
+                <img *ngIf="product.tabby" src="assets/tabby.png" alt="Tabby" class="h-[14px] md:h-[22px] object-contain">
+                <img *ngIf="product.tamara" src="assets/tamara.png" alt="Tamara" class="h-[14px] md:h-[22px] object-contain">
               </div>
             </div>
           </div>
