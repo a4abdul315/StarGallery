@@ -164,15 +164,18 @@
     display: none !important;
   }
 
-  /* Aggressive Mobile Scroll Fix */
+  /* Aggressive Global Mobile Scroll Fix */
+  &, 
+  .brand-showcase-container,
   .p-carousel, 
   .p-carousel-content, 
   .p-carousel-container, 
   .p-carousel-items-content,
   .p-carousel-items-container,
   .p-carousel-item,
-  .product-card {
+  .product-card,
+  .p-carousel-prev,
+  .p-carousel-next {
     touch-action: pan-y !important;
-    -ms-touch-action: pan-y !important;
   }
 }
