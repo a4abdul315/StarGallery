@@ -11,15 +11,14 @@
           [circular]="true" 
           (onPage)="onBannerChange($event)"
           styleClass="banner-carousel"
+          style="touch-action: pan-y !important;"
         >
           <ng-template let-banner pTemplate="item">
             <div class="banner-item h-auto min-h-[150px] md:h-[150px] relative flex items-center overflow-hidden" [style.background]="banner.bannerBg">
               <!-- Mobile Image -->
               <img *ngIf="banner.mobileImageUrl" [src]="banner.mobileImageUrl" alt="Mobile Banner" class="w-full h-auto block md:hidden">
-              
               <!-- Desktop Content (Background only) -->
-              <div class="hidden md:block w-full h-full">
-              </div>
+              <div class="hidden md:block w-full h-full"></div>
             </div>
           </ng-template>
         </p-carousel>
@@ -27,116 +26,94 @@
 
       <!-- CHILD PRODUCT SLIDER (BOTTOM) -->
       <div class="product-slider-container bg-[#B23438] px-0 md:px-6 pt-8 pb-8" style="touch-action: pan-y !important;">
-        <p-carousel 
-          #productCarousel
-          [value]="filteredProducts" 
-          [numVisible]="6" 
-          [numScroll]="2" 
-          [circular]="false"
-          [responsiveOptions]="productResponsive"
-          styleClass="product-carousel"
-          style="touch-action: pan-y !important;"
-        >
-          <ng-template let-product pTemplate="item">
-            <div class="product-card-wrap px-1 md:px-3">
-              <div class="product-card bg-white rounded-2xl p-3 relative group w-full h-[390px] lg:w-[242px] lg:h-auto mx-auto overflow-hidden">
-                
-                <!-- Interactive Stack (Heart & Brand) -->
-                <div class="absolute top-3 right-3 z-30 flex flex-col gap-2">
-                  <!-- Wishlist Button -->
-                  <button (click)="toggleWishlist(product.id)" class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full md:rounded-xl bg-white shadow-sm text-gray-400 hover:text-red-500 transition-colors">
-                    <i class="pi" [class.pi-heart]="!product.isWishlisted" [class.pi-heart-fill]="product.isWishlisted" [class.text-red-500]="product.isWishlisted"></i>
-                  </button>
+        
+        <!-- Desktop Carousel (PrimeNG) -->
+        <div class="hidden md:block">
+          <p-carousel 
+            #productCarousel
+            [value]="filteredProducts" 
+            [numVisible]="6" 
+            [numScroll]="2" 
+            [circular]="false"
+            [responsiveOptions]="productResponsive"
+            styleClass="product-carousel"
+          >
+            <ng-template let-product pTemplate="item">
+              <div class="product-card-wrap px-3">
+                <ng-container *ngTemplateOutlet="productTemplate; context: {$implicit: product}"></ng-container>
+              </div>
+            </ng-template>
+          </p-carousel>
+        </div>
 
-                  <!-- Brand Badge -->
-                  <div class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-xl bg-white shadow-sm overflow-hidden">
-                    <div class="relative w-6 h-6">
-                      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#FF3B30]"></div>
-                      <div class="absolute bottom-0 left-0 w-3 h-3 rounded-full bg-[#FFCC00]"></div>
-                      <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#007AFF]"></div>
-                    </div>
-                  </div>
+        <!-- Mobile Scroll (Native Snap - 100% Fluid) -->
+        <div class="md:hidden flex overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 gap-3" style="touch-action: pan-y !important;">
+          <div *ngFor="let product of filteredProducts" class="flex-shrink-0 w-[85%] snap-center">
+             <ng-container *ngTemplateOutlet="productTemplate; context: {$implicit: product}"></ng-container>
+          </div>
+        </div>
+
+        <!-- Shared Product Template -->
+        <ng-template #productTemplate let-product>
+          <div class="product-card bg-white rounded-2xl p-3 relative group w-full h-[390px] lg:h-auto mx-auto overflow-hidden">
+            <!-- Interactive Stack -->
+            <div class="absolute top-3 right-3 z-30 flex flex-col gap-2">
+              <button (click)="toggleWishlist(product.id)" class="w-8 h-8 flex items-center justify-center rounded-full bg-white shadow-sm text-gray-400">
+                <i class="pi" [class.pi-heart]="!product.isWishlisted" [class.pi-heart-fill]="product.isWishlisted" [class.text-red-500]="product.isWishlisted"></i>
+              </button>
+              <div class="w-8 h-8 flex items-center justify-center rounded-xl bg-white shadow-sm overflow-hidden">
+                <div class="relative w-6 h-6">
+                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-[#FF3B30]"></div>
+                  <div class="absolute bottom-0 left-0 w-3 h-3 rounded-full bg-[#FFCC00]"></div>
+                  <div class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#007AFF]"></div>
                 </div>
-
-                <!-- Image Area -->
-                <div class="relative w-full aspect-square overflow-hidden bg-[#F9FAFB] mb-2 rounded-xl group">
-                  <!-- Swipeable Container -->
-                  <div #variationContainer
-                       (scroll)="onProductImageScroll($event, product)"
-                       style="touch-action: pan-y;"
-                       class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-full">
-                    <div *ngFor="let img of product.images; let i = index" 
-                         class="flex-shrink-0 w-full h-full snap-center flex items-center justify-center p-4">
-                      <img [src]="img" [alt]="product.name" class="max-h-full max-w-full object-contain select-none pointer-events-none">
-                    </div>
-                  </div>
-
-                  <!-- Variations Dots (Indicator) -->
-                  <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
-                    <div *ngFor="let img of product.images; let idx = index"
-                         (click)="setProductImage(product, idx, variationContainer)"
-                         class="cursor-pointer transition-all duration-300"
-                         [ngClass]="product.activeImageIndex === idx ? 'h-1.5 w-8 rounded-full bg-slate-600' : 'h-1.5 w-1.5 rounded-full bg-slate-300'">
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Info -->
-                <div class="product-info space-y-1 text-left px-1">
-                  <!-- Name -->
-                  <h3 class="text-[14px] md:text-[16px] font-bold text-black leading-tight mb-2 line-clamp-2 min-h-[34px]">
-                    {{ lang === 'ar' ? product.nameAr : product.name }}
-                  </h3>
-                  
-                  <!-- Rating -->
-                  <div class="flex items-center gap-1.5 mb-1.5">
-                    <div class="flex items-center text-[#FFC107] text-[12px] gap-0.5">
-                      <i class="pi pi-star-fill"></i>
-                      <i class="pi pi-star-fill"></i>
-                      <i class="pi pi-star-fill"></i>
-                      <i class="pi pi-star-fill"></i>
-                      <i class="pi pi-star text-[#D1D5DB]"></i>
-                    </div>
-                    <span class="text-[14px] text-gray-400 font-normal">{{ product.rating }} ({{ product.reviews }})</span>
-                  </div>
-
-                  <!-- Price -->
-                  <div class="flex items-center justify-start gap-4 md:justify-between flex-nowrap mb-3">
-                    <div class="flex items-baseline">
-                      <span class="text-[16px] md:text-[22px] font-black text-black leading-none flex items-center">
-                        <img src="assets/Group.png" alt="AED" class="h-[14px] mr-1 object-contain">
-                        {{ product.price }}.00
-                      </span>
-                    </div>
-                    <div class="flex items-center gap-4">
-                      <span class="text-[#A0A0A0] text-[12px] md:text-[14px] line-through font-normal">{{ product.originalPrice }}</span>
-                      <span class="text-[10px] md:text-[12px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 bg-[#FFF0F0] rounded-full whitespace-nowrap text-[#B23438]">
-                        {{ product.discount }}% {{ tr.t('off') }}
-                      </span>
-                    </div>
-                  </div>
-
-                  <!-- Cash On Delivery -->
-                  <div *ngIf="product.cashOnDelivery" class="flex items-center gap-1.5 text-[#00A651] text-[14px] font-bold mt-[12px] mb-[-12px] md:mt-0 md:mb-0">
-                    <img src="assets/cashicon.png" alt="COD" class="h-4 w-4 object-contain">
-                    {{ tr.t('cashOnDeliveryBadge') }}
-                  </div>
-
-                  <!-- Badges -->
-                  <div class="flex items-center gap-2">
-                    <img *ngIf="product.tabby" src="assets/tabby_v2 1.png" alt="Tabby" class="h-10 object-contain rounded-lg">
-                    <img *ngIf="product.tamara" src="assets/tamara-en 1.png" alt="Tamara" class="h-10 object-contain rounded-lg">
-                  </div>
-                </div>
-
               </div>
             </div>
-          </ng-template>
-        </p-carousel>
 
-        <!-- VIEW MORE BUTTON (PILL STYLE) -->
-        <div class="mt-8 flex justify-center px-4 md:px-0">
-          <button class="bg-white text-[#B23438] font-black py-4 px-12 rounded-2xl w-full max-w-[100%] text-xl transition-transform hover:scale-[1.01] active:scale-[0.99]">
+            <!-- Image Area -->
+            <div class="relative w-full aspect-square overflow-hidden bg-[#F9FAFB] mb-2 rounded-xl">
+              <div #variationContainer class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-full" style="touch-action: pan-y !important;">
+                <div *ngFor="let img of product.images" class="flex-shrink-0 w-full h-full snap-center flex items-center justify-center p-4">
+                  <img [src]="img" [alt]="product.name" class="max-h-full max-w-full object-contain pointer-events-none">
+                </div>
+              </div>
+            </div>
+
+            <!-- Info -->
+            <div class="product-info space-y-1 text-left px-1">
+              <h3 class="text-[14px] font-bold text-black leading-tight mb-2 line-clamp-2 min-h-[34px]">
+                {{ lang === 'ar' ? product.nameAr : product.name }}
+              </h3>
+              <div class="flex items-center gap-1.5 mb-1.5">
+                <div class="flex items-center text-[#FFC107] text-[12px] gap-0.5">
+                  <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-[#D1D5DB]"></i>
+                </div>
+                <span class="text-[14px] text-gray-400">{{ product.rating }} ({{ product.reviews }})</span>
+              </div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[16px] font-black text-black flex items-center">
+                  <img src="assets/Group.png" alt="AED" class="h-[14px] mr-1">
+                  {{ product.price }}.00
+                </span>
+                <span class="text-[10px] font-bold px-1.5 py-0.5 bg-[#FFF0F0] rounded-full text-[#B23438]">
+                  40% {{ tr.t('off') }}
+                </span>
+              </div>
+              <div *ngIf="product.cashOnDelivery" class="flex items-center gap-1.5 text-[#00A651] text-[14px] font-bold">
+                <img src="assets/cashicon.png" alt="COD" class="h-4 w-4">
+                {{ tr.t('cashOnDeliveryBadge') }}
+              </div>
+              <div class="flex items-center gap-2">
+                <img *ngIf="product.tabby" src="assets/tabby_v2 1.png" alt="Tabby" class="h-10 object-contain">
+                <img *ngIf="product.tamara" src="assets/tamara-en 1.png" alt="Tamara" class="h-10 object-contain">
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <!-- VIEW MORE BUTTON -->
+        <div class="mt-8 flex justify-center px-4">
+          <button class="bg-white text-[#B23438] font-black py-4 px-12 rounded-2xl w-full text-xl">
             {{ tr.t('viewMore') }}
           </button>
         </div>
