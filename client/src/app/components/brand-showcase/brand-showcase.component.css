@@ -146,6 +146,10 @@
     overflow: hidden !important;
   }
 
+  .product-carousel .p-carousel-item {
+    padding: 0 10px !important;
+  }
+
   /* Native-feeling Scroll Fix */
   .brand-showcase-section,
   .brand-showcase-wrapper {
