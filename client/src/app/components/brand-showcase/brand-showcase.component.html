@@ -3,7 +3,7 @@
     <div class="brand-showcase-wrapper md:rounded-[2.5rem] overflow-hidden bg-white">
       
       <!-- PARENT BANNER SLIDER (TOP) -->
-      <div class="banner-slider-container relative" style="touch-action: pan-y !important;">
+      <div class="banner-slider-container relative">
         <p-carousel 
           [value]="banners" 
           [numVisible]="1" 
@@ -11,13 +11,12 @@
           [circular]="true" 
           (onPage)="onBannerChange($event)"
           styleClass="banner-carousel"
-          style="touch-action: pan-y !important;"
         >
           <ng-template let-banner pTemplate="item">
             <div class="banner-item h-auto min-h-[150px] md:h-[150px] relative flex items-center overflow-hidden" [style.background]="banner.bannerBg">
               <!-- Mobile Image -->
               <img *ngIf="banner.mobileImageUrl" [src]="banner.mobileImageUrl" alt="Mobile Banner" class="w-full h-auto block md:hidden">
-              <!-- Desktop Content (Background only) -->
+              <!-- Desktop Content -->
               <div class="hidden md:block w-full h-full"></div>
             </div>
           </ng-template>
@@ -25,9 +24,9 @@
       </div>
 
       <!-- CHILD PRODUCT SLIDER (BOTTOM) -->
-      <div class="product-slider-container bg-[#B23438] px-0 md:px-6 pt-8 pb-8" style="touch-action: pan-y !important;">
+      <div class="product-slider-container bg-[#B23438] px-0 md:px-6 pt-8 pb-8">
         
-        <!-- Desktop Carousel (PrimeNG) -->
+        <!-- Desktop: PrimeNG Carousel -->
         <div class="hidden md:block">
           <p-carousel 
             #productCarousel
@@ -46,8 +45,8 @@
           </p-carousel>
         </div>
 
-        <!-- Mobile Scroll (Native Snap - 100% Fluid) -->
-        <div class="md:hidden flex overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 gap-3" style="touch-action: pan-y !important;">
+        <!-- Mobile: Native Snap Scroll -->
+        <div class="md:hidden flex overflow-x-auto snap-x snap-mandatory scrollbar-hide px-4 gap-3 mobile-products-list">
           <div *ngFor="let product of filteredProducts" class="flex-shrink-0 w-[85%] snap-center">
              <ng-container *ngTemplateOutlet="productTemplate; context: {$implicit: product}"></ng-container>
           </div>
@@ -72,7 +71,7 @@
 
             <!-- Image Area -->
             <div class="relative w-full aspect-square overflow-hidden bg-[#F9FAFB] mb-2 rounded-xl">
-              <div #variationContainer class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-full" style="touch-action: pan-y !important;">
+              <div #variationContainer class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-full variation-swipe-container">
                 <div *ngFor="let img of product.images" class="flex-shrink-0 w-full h-full snap-center flex items-center justify-center p-4">
                   <img [src]="img" [alt]="product.name" class="max-h-full max-w-full object-contain pointer-events-none">
                 </div>

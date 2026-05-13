@@ -9,7 +9,6 @@
         [circular]="true"
         [responsiveOptions]="desktopResponsive"
         styleClass="category-carousel"
-        style="touch-action: pan-y !important;"
       >
         <ng-template let-cat pTemplate="item">
           <div class="cat-item" [id]="'cat-' + cat.id">
@@ -31,7 +30,6 @@
         [circular]="true"
         [responsiveOptions]="[{breakpoint: '768px', numVisible: 4, numScroll: 1}]"
         styleClass="category-carousel mobile-carousel"
-        style="touch-action: pan-y !important;"
       >
         <ng-template let-cat pTemplate="item">
           <div class="cat-item" [id]="'cat-' + cat.id">
