@@ -141,6 +141,7 @@
     grid-auto-flow: column;
     gap: 24px 16px;
     overflow-x: auto;
+    touch-action: pan-y !important;
     padding: 0 16px 24px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
