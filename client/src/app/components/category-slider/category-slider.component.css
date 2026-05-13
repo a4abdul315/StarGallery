@@ -138,19 +138,22 @@
   .mobile-cat-grid {
     display: grid;
     grid-template-rows: repeat(2, auto);
-    grid-auto-flow: column;
+    grid-template-columns: repeat(6, 95px);
     gap: 24px 16px;
     overflow-x: auto;
+    width: 100%;
     padding: 0 16px 24px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Hide scrollbar for clean look */
+    scrollbar-width: none;
+    touch-action: auto !important; /* Allow all directions */
   }
   .mobile-cat-grid::-webkit-scrollbar {
     display: none;
   }
   .mobile-cat-grid .cat-item {
-    width: 82px; /* Fits approx 4.5 items on screen */
+    width: 90px;
+    min-width: 90px; /* Force them to overflow the screen */
     scroll-snap-align: start;
   }
   
