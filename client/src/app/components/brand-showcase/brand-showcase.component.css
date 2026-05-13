@@ -153,14 +153,14 @@
   }
 
   .p-carousel-content {
-    touch-action: pan-x !important; /* Allow horizontal swipe on the carousel */
+    touch-action: auto !important;
   }
 
   .product-card,
   .product-card *,
   .variationContainer,
   .variationContainer * {
-    touch-action: pan-x pan-y !important; /* Allow both on small items */
+    touch-action: auto !important; /* Allow all directions everywhere */
     pointer-events: auto;
   }
 
