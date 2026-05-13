@@ -92,31 +92,31 @@
               <h3 class="text-[14px] md:text-[16px] font-bold text-black leading-tight mb-2 line-clamp-2 min-h-[34px]">
                 {{ lang === 'ar' ? product.nameAr : product.name }}
               </h3>
-              <div class="flex items-center gap-1.5 mb-1.5">
-                <div class="flex items-center text-[#FFC107] text-[12px] gap-0.5">
+              <div class="flex items-center gap-1 mb-1">
+                <div class="flex items-center text-[#FFC107] text-[7px] gap-0.5">
                   <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-[#D1D5DB]"></i>
                 </div>
-                <span class="text-[14px] text-gray-400 font-normal">{{ product.rating }} ({{ product.reviews }})</span>
+                <span class="text-[8px] text-gray-400 font-normal">{{ product.rating }} ({{ product.reviews }})</span>
               </div>
               <div class="flex items-center justify-start gap-4 md:justify-between flex-nowrap mb-3">
-                <span class="text-[16px] md:text-[22px] font-black text-black leading-none flex items-center">
-                  <img src="assets/Group.png" alt="AED" class="h-[14px] mr-1 object-contain">
+                <span class="text-[14px] md:text-[22px] font-black text-black leading-none flex items-center">
+                  <img src="assets/Group.png" alt="AED" class="h-[12px] mr-1 object-contain">
                   {{ product.price }}.00
                 </span>
-                <div class="flex items-center gap-4">
-                  <span class="text-[#A0A0A0] text-[12px] md:text-[14px] line-through font-normal">{{ product.originalPrice }}</span>
-                  <span class="text-[10px] md:text-[12px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 bg-[#FFF0F0] rounded-full whitespace-nowrap text-[#B23438]">
+                <div class="flex items-center gap-3">
+                  <span class="text-[#A0A0A0] text-[10px] md:text-[14px] line-through font-normal">{{ product.originalPrice }}</span>
+                  <span class="text-[9px] md:text-[12px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 bg-[#FFF0F0] rounded-full whitespace-nowrap text-[#B23438]">
                     {{ product.discount }}% {{ tr.t('off') }}
                   </span>
                 </div>
               </div>
-              <div *ngIf="product.cashOnDelivery" class="flex items-center gap-1.5 text-[#00A651] text-[14px] font-bold mt-[12px] mb-[-12px] md:mt-0 md:mb-0">
-                <img src="assets/cashicon.png" alt="COD" class="h-4 w-4 object-contain">
+              <div *ngIf="product.cashOnDelivery" class="flex items-center gap-1 text-[#00A651] text-[10px] font-bold mt-[12px] mb-[-12px] md:mt-0 md:mb-0">
+                <img src="assets/cashicon.png" alt="COD" class="h-[10px] w-[10px] object-contain">
                 {{ tr.t('cashOnDeliveryBadge') }}
               </div>
-              <div class="flex items-center gap-2">
-                <img *ngIf="product.tabby" src="assets/tabby_v2 1.png" alt="Tabby" class="h-10 object-contain rounded-lg">
-                <img *ngIf="product.tamara" src="assets/tamara-en 1.png" alt="Tamara" class="h-10 object-contain rounded-lg">
+              <div class="flex items-center gap-1.5">
+                <img *ngIf="product.tabby" src="assets/tabby.png" alt="Tabby" class="h-[11px] object-contain">
+                <img *ngIf="product.tamara" src="assets/tamara.png" alt="Tamara" class="h-[11px] object-contain">
               </div>
             </div>
           </div>
