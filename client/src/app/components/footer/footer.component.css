@@ -391,7 +391,8 @@
     background: transparent !important;
     border: none !important;
     padding: 16px 4px !important;
-    font-weight: 800 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
     color: #111827 !important;
     font-size: 15px !important;
     flex-direction: row-reverse !important;
@@ -478,8 +479,9 @@
   transition: all 0.2s ease;
 }
 :host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-text {
+  font-family: 'Poppins', sans-serif !important;
   font-size: 14px !important; /* Slightly larger */
-  font-weight: 800 !important;
+  font-weight: 700 !important;
   letter-spacing: -0.01em !important;
 }
 :host ::ng-deep .p-accordion .p-accordion-toggle-icon {

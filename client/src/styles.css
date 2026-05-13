@@ -241,3 +241,17 @@ body {
 .h-32 {
   height: 5rem !important;
 }
+
+/* Global PrimeNG Font Overrides */
+.p-component,
+.p-button,
+.p-inputtext,
+.p-dropdown,
+.p-carousel,
+.p-accordion,
+.p-accordion-header-text,
+.p-accordion-content,
+.p-tabview,
+.p-dialog {
+  font-family: 'Poppins', sans-serif !important;
+}
