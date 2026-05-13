@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CarouselModule, Carousel } from 'primeng/carousel';
 import { Subject, takeUntil } from 'rxjs';
@@ -110,6 +110,19 @@ export class BrandShowcaseComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  // FORCE SCROLL PASSTHROUGH
+  @HostListener('wheel', ['$event'])
+  onWheel(event: WheelEvent): void {
+    // If the scroll is mostly vertical, force the window to scroll
+    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+      window.scrollBy({
+        top: event.deltaY,
+        behavior: 'auto'
+      });
+      // Do not prevent default, just let it through
+    }
   }
 
   onBannerChange(event: any): void {

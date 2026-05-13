@@ -146,18 +146,30 @@
     overflow: hidden !important;
   }
 
+  /* Aggressive Mobile Scroll Fix for the whole section */
+  .brand-showcase-section,
+  .brand-showcase-wrapper,
+  .brand-showcase-section *,
+  .brand-showcase-wrapper *,
+  .p-carousel, 
+  .p-carousel *,
   .product-card,
   .product-card *,
   .variationContainer,
   .variationContainer * {
     touch-action: pan-y !important;
+    pointer-events: auto; /* Ensure they don't block by being none */
+  }
+
+  /* Force product cards to not capture vertical scroll */
+  .product-card {
+    overflow: visible !important;
   }
 
   /* Hide potential scrollbars comprehensively */
   &, * {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
-    touch-action: pan-y; /* Allow vertical page scrolling */
   }
   &::-webkit-scrollbar, *::-webkit-scrollbar {
     display: none !important;

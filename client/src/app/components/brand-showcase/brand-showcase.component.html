@@ -38,10 +38,10 @@
         >
           <ng-template let-product pTemplate="item">
             <div class="product-card-wrap px-1 md:px-3">
-              <div class="product-card bg-white rounded-2xl p-3 relative group w-full h-[390px] lg:w-[242px] lg:h-auto mx-auto overflow-hidden">
+              <div class="product-card bg-white rounded-2xl p-3 relative group w-full h-[390px] lg:w-[242px] lg:h-auto mx-auto overflow-hidden" style="touch-action: pan-y !important;">
                 
                 <!-- Interactive Stack (Heart & Brand) -->
-                <div class="absolute top-3 right-3 z-30 flex flex-col gap-2">
+                <div class="absolute top-3 right-3 z-30 flex flex-col gap-2" style="touch-action: pan-y !important;">
                   <!-- Wishlist Button -->
                   <button (click)="toggleWishlist(product.id)" class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full md:rounded-xl bg-white shadow-sm text-gray-400 hover:text-red-500 transition-colors">
                     <i class="pi" [class.pi-heart]="!product.isWishlisted" [class.pi-heart-fill]="product.isWishlisted" [class.text-red-500]="product.isWishlisted"></i>
@@ -58,11 +58,11 @@
                 </div>
 
                 <!-- Image Area -->
-                <div class="relative w-full aspect-square overflow-hidden bg-[#F9FAFB] mb-2 rounded-xl group">
+                <div class="relative w-full aspect-square overflow-hidden bg-[#F9FAFB] mb-2 rounded-xl group" style="touch-action: pan-y !important;">
                   <!-- Swipeable Container -->
                   <div #variationContainer
                        (scroll)="onProductImageScroll($event, product)"
-                       style="touch-action: pan-y;"
+                       style="touch-action: pan-y !important;"
                        class="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-full">
                     <div *ngFor="let img of product.images; let i = index" 
                          class="flex-shrink-0 w-full h-full snap-center flex items-center justify-center p-4">
@@ -71,7 +71,7 @@
                   </div>
 
                   <!-- Variations Dots (Indicator) -->
-                  <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10">
+                  <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1 z-10" style="touch-action: pan-y !important;">
                     <div *ngFor="let img of product.images; let idx = index"
                          (click)="setProductImage(product, idx, variationContainer)"
                          class="cursor-pointer transition-all duration-300"
@@ -81,7 +81,7 @@
                 </div>
 
                 <!-- Info -->
-                <div class="product-info space-y-1 text-left px-1">
+                <div class="product-info space-y-1 text-left px-1" style="touch-action: pan-y !important;">
                   <!-- Name -->
                   <h3 class="text-[14px] md:text-[16px] font-bold text-black leading-tight mb-2 line-clamp-2 min-h-[34px]">
                     {{ lang === 'ar' ? product.nameAr : product.name }}
