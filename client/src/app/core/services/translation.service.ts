@@ -40,7 +40,8 @@ const EN: Record<string, string> = {
   carVideoReceivers: 'Car Video Receivers', airCompressors: 'Air Compressors',
   carElectricKettles: 'Car Electric Kettles', carMobileHolders: 'Car Mobile Holders',
   carCleaningKits: 'Car Cleaning Kits', toggleLang: 'عربي',
-};
+  off: 'off',
+}
 
 const AR: Record<string, string> = {
   ourLocation: 'موقعنا', cashOnDelivery: 'الدفع عند الاستلام',
@@ -79,7 +80,8 @@ const AR: Record<string, string> = {
   carVideoReceivers: 'مستقبلات الفيديو', airCompressors: 'ضواغط الهواء',
   carElectricKettles: 'الغلايات الكهربائية', carMobileHolders: 'حاملات الجوال',
   carCleaningKits: 'أدوات تنظيف السيارة', toggleLang: 'English',
-};
+  off: 'خصم',
+}
 
 @Injectable({ providedIn: 'root' })
 export class TranslationService {

@@ -88,25 +88,29 @@
               </div>
             </div>
 
-            <div class="product-info space-y-1 text-left px-1">
+            <div class="product-info space-y-1 px-1" [ngClass]="lang === 'ar' ? 'text-right' : 'text-left'">
               <h3 class="text-[14px] md:text-[16px] font-medium text-black leading-tight mb-2 line-clamp-2 min-h-[34px]">
                 {{ lang === 'ar' ? product.nameAr : product.name }}
               </h3>
-              <div class="flex items-center gap-1 mb-1">
-                <div class="flex items-center text-[#FFC107] text-[7px] gap-0.5">
-                  <i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star-fill"></i><i class="pi pi-star text-[#D1D5DB]"></i>
+              <div class="flex items-center gap-1 mb-1" dir="ltr" [ngClass]="{'justify-end': lang === 'ar'}">
+                <div class="flex items-center">
+                  <i *ngFor="let star of [1,2,3,4,5]" 
+                     class="pi" 
+                     [ngClass]="star <= product.rating ? 'pi-star-fill text-yellow-400' : 'pi-star text-gray-300'"
+                     style="font-size: 7px;"></i>
                 </div>
-                <span class="text-[8px] text-gray-400 font-normal">{{ product.rating }} ({{ product.reviews }})</span>
+                <span class="text-[8px] text-gray-400 font-normal ml-1">{{ product.rating }} ({{ product.reviews }})</span>
               </div>
-              <div class="flex items-center justify-start gap-4 md:justify-between flex-nowrap mb-3">
-                <span class="text-[14px] md:text-[22px] font-semibold text-black leading-none flex items-center">
+              <div class="flex items-center justify-start gap-4 md:justify-between flex-nowrap mb-3" [ngClass]="{'justify-end': lang === 'ar'}">
+                <span class="text-[14px] md:text-[22px] font-semibold text-black leading-none flex items-center" dir="ltr">
                   <img src="assets/Group.png" alt="AED" class="h-[12px] mr-1 object-contain">
                   {{ product.price }}.00
                 </span>
                 <div class="flex items-center gap-3">
                   <span class="text-[#A0A0A0] text-[10px] md:text-[14px] line-through font-normal">{{ product.originalPrice }}</span>
                   <span class="text-[9px] md:text-[12px] font-medium px-1.5 md:px-3 py-0.5 md:py-1 bg-[#FFF0F0] rounded-full whitespace-nowrap text-[#B23438]">
-                    {{ product.discount }}% {{ tr.t('off') }}
+                    <ng-container *ngIf="lang !== 'ar'">{{ product.discount }}% {{ tr.t('off') }}</ng-container>
+                    <ng-container *ngIf="lang === 'ar'">{{ tr.t('off') }} {{ product.discount }}%</ng-container>
                   </span>
                 </div>
               </div>

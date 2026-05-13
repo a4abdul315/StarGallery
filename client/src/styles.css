@@ -24,9 +24,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Arabic Font Overrides */
+/* Arabic Font Overrides - Exclude icons from being overwritten */
 [dir="rtl"] body,
-[dir="rtl"] * {
+[dir="rtl"] *:not(.pi):not([class^="pi-"]):not([class*=" pi-"]):not(.fa):not(.fas):not(.far):not(.fab):not(.material-icons) {
   font-family: 'Tajawal', sans-serif !important;
 }
 
