@@ -1,0 +1,170 @@
+<!-- ============================================================
+     TOP BAR — ROW 1: 4 equal columns | ROW 2: installments center
+     ============================================================ -->
+<div class="top-bar hidden lg:block">
+  
+  <!-- Row 1 Wrapper for Full Width BG -->
+  <div class="top-bar-row1-bg">
+    <div class="sg-container">
+      <div class="top-bar-row1">
+        <!-- Col 1: Our Location -->
+        <a href="#" class="top-item top-item--red top-col" id="topbar-location">
+          <img src="assets/images/header/icon-location.svg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block'"
+               alt="" class="top-icon">
+          <i class="pi pi-map-marker top-icon-fallback"></i>
+          <span>{{ tr.t('ourLocation') }}</span>
+        </a>
+
+        <!-- Col 2: Free Delivery -->
+        <a href="#" class="top-item top-item--orange top-col" id="topbar-delivery">
+          <img src="assets/images/header/icon-delivery.svg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block'"
+               alt="" class="top-icon">
+          <i class="pi pi-truck top-icon-fallback"></i>
+          <span>{{ tr.t('freeDelivery') }}</span>
+        </a>
+
+        <!-- Col 3: Cash on Delivery -->
+        <a href="#" class="top-item top-item--green top-col" id="topbar-cod">
+          <img src="assets/images/header/icon-cash.svg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block'"
+               alt="" class="top-icon">
+          <i class="pi pi-credit-card top-icon-fallback"></i>
+          <span>{{ tr.t('cashOnDelivery') }}</span>
+        </a>
+
+        <!-- Col 4: Get App -->
+        <a href="#" class="top-item top-item--dark top-col" id="topbar-app">
+          <img src="assets/images/header/icon-app.svg"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block'"
+               alt="" class="top-icon">
+          <i class="pi pi-mobile top-icon-fallback"></i>
+          <span>{{ tr.t('getMartApp') }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 Content -->
+  <div class="sg-container">
+    <div class="top-bar-row2">
+      <span class="installments-text">{{ tr.t('installments') }}</span>
+      <img src="assets/tabby_v2%201.png" alt="Tabby" class="tabby-badge-img">
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================
+     MAIN HEADER
+     ============================================================ -->
+<header class="main-header">
+  <div class="sg-container">
+    <div class="header-row">
+
+      <!-- Logo -->
+      <a href="/" class="logo-link" aria-label="Star Gallery Mart Home">
+        <div class="logo-wrap">
+          <img
+            src="assets/logo.png"
+            alt="Star Gallery"
+            class="logo-img"
+          >
+        </div>
+      </a>
+
+      <!-- Deliver to (Desktop) -->
+      <div class="deliver-to hidden lg:flex">
+        <span class="deliver-label">{{ tr.t('deliverTo') }}</span>
+        <div class="deliver-location">
+          <img src="https://flagcdn.com/w40/ae.png" alt="UAE" class="flag-img" width="22" height="15">
+          <span class="location-text">{{ tr.t('dubai') }}</span>
+          <i class="pi pi-chevron-down" style="font-size:10px; color:#888;"></i>
+        </div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-wrap">
+        <input
+          type="text"
+          class="search-input"
+          [placeholder]="tr.t('searchPlaceholder')"
+          [dir]="isRtl ? 'rtl' : 'ltr'"
+          aria-label="Search products"
+          id="header-search"
+        >
+        <button class="search-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Right icons: Language · Account · Wishlist · Cart (Desktop) -->
+      <div class="header-icons hidden lg:flex">
+        <button class="icon-btn-vertical" (click)="toggleLang()" id="desktop-lang-toggle" aria-label="Toggle language">
+          <div class="icon-circle">
+            <i class="pi pi-globe"></i>
+          </div>
+          <span>{{ isRtl ? 'English' : 'العربية' }}</span>
+        </button>
+        
+        <button class="icon-btn-vertical" id="header-account" aria-label="Account">
+          <i class="pi pi-user"></i>
+          <span>{{ tr.t('account') }}</span>
+        </button>
+        
+        <button class="icon-btn-vertical" id="header-wishlist" aria-label="Wishlist">
+          <i class="pi pi-heart"></i>
+          <span>{{ tr.t('wishlist') }}</span>
+        </button>
+        
+        <button class="icon-btn-vertical" id="header-cart" aria-label="Cart">
+          <i class="pi pi-shopping-cart"></i>
+          <span>{{ tr.t('cart') }}</span>
+        </button>
+      </div>
+
+      <!-- Mobile: Language toggle -->
+      <div class="mobile-lang-wrap lg:hidden ml-auto">
+        <button class="mobile-lang-btn" (click)="toggleLang()" id="mobile-lang-toggle">
+          <i class="pi pi-globe"></i>
+          <span>{{ isRtl ? 'English' : 'العربية' }}</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- Mobile location bar -->
+<div class="mobile-location lg:hidden">
+  <div class="sg-container">
+    <div class="mobile-loc-inner">
+      <div class="loc-pin">
+        <i class="pi pi-map-marker"></i>
+      </div>
+      <span class="loc-label">{{ tr.t('deliverTo') }}</span>
+      <span class="loc-address">57XC+WJ-Dubai</span>
+      <i class="pi pi-chevron-down loc-arrow"></i>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION BAR (Desktop) -->
+<nav class="nav-bar hidden lg:block" aria-label="Main navigation">
+  <div class="sg-container">
+    <div class="nav-inner">
+      <!-- Categories Button -->
+      <button class="categories-btn" id="nav-categories" aria-label="All categories">
+        <i class="pi pi-th-large"></i>
+        <span>{{ tr.t('allCategories') }}</span>
+      </button>
+
+      <!-- All Links as direct flex children -->
+      <a *ngFor="let link of navLinks" href="#" class="nav-link">{{ tr.t(link) }}</a>
+    </div>
+  </div>
+</nav>
