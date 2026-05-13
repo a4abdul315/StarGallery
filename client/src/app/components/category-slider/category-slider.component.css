@@ -141,7 +141,6 @@
     grid-auto-flow: column;
     gap: 24px 16px;
     overflow-x: auto;
-    touch-action: pan-y !important;
     padding: 0 16px 24px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
@@ -151,7 +150,7 @@
     display: none;
   }
   .mobile-cat-grid .cat-item {
-    width: 95px; /* Slightly wider for better swiping */
+    width: 82px; /* Fits approx 4.5 items on screen */
     scroll-snap-align: start;
   }
   
