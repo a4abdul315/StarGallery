@@ -36,15 +36,15 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "./src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/star-gallery",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
+            "index": "./src/index.html",
+            "browser": "./src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -57,7 +57,7 @@
               "node_modules/primeng/resources/themes/lara-light-green/theme.css",
               "node_modules/primeng/resources/primeng.css",
               "node_modules/primeicons/primeicons.css",
-              "src/styles.css"
+              "./src/styles.css"
             ],
             "scripts": []
           },
@@ -116,7 +116,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "./src/styles.css"
             ],
             "scripts": []
           }
