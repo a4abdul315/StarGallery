@@ -17,16 +17,17 @@ html, body {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  color: #1A1A1A;
-  background-color: #FFFFFF;
-  overflow-x: hidden;
+  margin: 0;
+  font-family: 'Poppins', sans-serif !important;
+  background-color: #f8f9fa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Arabic Font Overrides */
 [dir="rtl"] body,
-[dir="rtl"] {
-  font-family: 'Noto Sans Arabic', sans-serif;
+[dir="rtl"] * {
+  font-family: 'Tajawal', sans-serif !important;
 }
 
 /* ============================================
@@ -235,4 +236,8 @@ body {
   .nav-item.active {
     color: #00A651;
   }
+}
+
+.h-32 {
+  height: 5rem !important;
 }

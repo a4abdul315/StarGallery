@@ -89,7 +89,7 @@
             </div>
 
             <div class="product-info space-y-1 text-left px-1">
-              <h3 class="text-[14px] md:text-[16px] font-bold text-black leading-tight mb-2 line-clamp-2 min-h-[34px]">
+              <h3 class="text-[14px] md:text-[16px] font-medium text-black leading-tight mb-2 line-clamp-2 min-h-[34px]">
                 {{ lang === 'ar' ? product.nameAr : product.name }}
               </h3>
               <div class="flex items-center gap-1 mb-1">
@@ -99,18 +99,18 @@
                 <span class="text-[8px] text-gray-400 font-normal">{{ product.rating }} ({{ product.reviews }})</span>
               </div>
               <div class="flex items-center justify-start gap-4 md:justify-between flex-nowrap mb-3">
-                <span class="text-[14px] md:text-[22px] font-black text-black leading-none flex items-center">
+                <span class="text-[14px] md:text-[22px] font-semibold text-black leading-none flex items-center">
                   <img src="assets/Group.png" alt="AED" class="h-[12px] mr-1 object-contain">
                   {{ product.price }}.00
                 </span>
                 <div class="flex items-center gap-3">
                   <span class="text-[#A0A0A0] text-[10px] md:text-[14px] line-through font-normal">{{ product.originalPrice }}</span>
-                  <span class="text-[9px] md:text-[12px] font-bold px-1.5 md:px-3 py-0.5 md:py-1 bg-[#FFF0F0] rounded-full whitespace-nowrap text-[#B23438]">
+                  <span class="text-[9px] md:text-[12px] font-medium px-1.5 md:px-3 py-0.5 md:py-1 bg-[#FFF0F0] rounded-full whitespace-nowrap text-[#B23438]">
                     {{ product.discount }}% {{ tr.t('off') }}
                   </span>
                 </div>
               </div>
-              <div *ngIf="product.cashOnDelivery" class="flex items-center gap-1 text-[#00A651] text-[10px] font-bold mt-[12px] mb-[-12px] md:mt-0 md:mb-0">
+              <div *ngIf="product.cashOnDelivery" class="flex items-center gap-1 text-[#00A651] text-[10px] font-normal mt-[12px] mb-[-12px] md:mt-0 md:mb-0">
                 <img src="assets/cashicon.png" alt="COD" class="h-[10px] w-[10px] object-contain">
                 {{ tr.t('cashOnDeliveryBadge') }}
               </div>
@@ -124,7 +124,7 @@
 
         <!-- VIEW MORE BUTTON -->
         <div class="mt-8 flex justify-center px-4 md:px-0">
-          <button class="bg-white text-[#B23438] font-black py-4 px-12 rounded-2xl w-full max-w-[100%] text-xl transition-transform hover:scale-[1.01] active:scale-[0.99]">
+          <button class="bg-white text-[#B23438] font-bold py-4 px-12 rounded-2xl w-full max-w-[100%] text-xl transition-transform hover:scale-[1.01] active:scale-[0.99]">
             {{ tr.t('viewMore') }}
           </button>
         </div>

@@ -116,7 +116,7 @@
 
 .cat-name {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   color: #111;
   text-align: center;
   white-space: nowrap;
@@ -183,7 +183,7 @@
 
 @media (max-width: 480px) {
   .cat-circle { width: 85px; height: 85px; }
-  .cat-name { font-size: 11px; font-weight: 700; }
+  .cat-name { font-size: 11px; font-weight: 500; }
   .mobile-cat-grid .cat-item {
     width: 85px;
   }
