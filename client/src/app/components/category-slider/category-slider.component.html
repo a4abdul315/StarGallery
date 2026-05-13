@@ -23,7 +23,7 @@
 
     <!-- Mobile 2-Row Grid -->
     <div class="lg:hidden">
-      <div class="mobile-cat-grid">
+      <div class="mobile-cat-grid" (scroll)="onScroll($event)">
         <div *ngFor="let cat of categories" class="cat-item">
           <div class="cat-circle">
             <img src="assets/charger.png" [alt]="getCategoryName(cat)" class="cat-img" loading="lazy">

@@ -39,5 +39,15 @@ export class CategorySliderComponent implements OnInit, OnDestroy {
     return this.lang === 'ar' ? cat.nameAr : cat.name;
   }
 
+  onScroll(event: any): void {
+    const element = event.target;
+    const scrollPercentage = (element.scrollLeft / (element.scrollWidth - element.clientWidth)) * 100;
+    const indicatorBar = document.querySelector('.indicator-bar') as HTMLElement;
+    if (indicatorBar) {
+      // The bar itself is 50% width, so we move it across the remaining 50%
+      indicatorBar.style.left = `${scrollPercentage / 2}%`;
+    }
+  }
+
   ngOnDestroy(): void { this.destroy$.next(); this.destroy$.complete(); }
 }
