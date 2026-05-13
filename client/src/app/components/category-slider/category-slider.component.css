@@ -151,7 +151,7 @@
     display: none;
   }
   .mobile-cat-grid .cat-item {
-    width: 82px; /* Fits approx 4.5 items on screen */
+    width: 95px; /* Slightly wider for better swiping */
     scroll-snap-align: start;
   }
   
