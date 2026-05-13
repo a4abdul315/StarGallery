@@ -9,8 +9,8 @@ exports.getProducts = async (req, res) => {
     const products = await Product.findAll({
       attributes: [
         'id',
-        [Sequelize.col(`name_${lang}`), 'name'],
-        [Sequelize.col(`description_${lang}`), 'description'],
+        [Sequelize.col(`Product.name_${lang}`), 'name'],
+        [Sequelize.col(`Product.description_${lang}`), 'description'],
         'price',
         'slug',
         'images',
